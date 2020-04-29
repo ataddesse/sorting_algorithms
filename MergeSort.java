@@ -2,16 +2,24 @@ import java.util.ArrayList;
 
 public class MergeSort {
 
-    ArrayList<String> source;
+    private ArrayList<String> source;
+    private static int counter = 0;
+    private long start = 0;
+    private long end = 0;
+    private long duration = 0;
 
     public MergeSort(ArrayList<String> input){
+
         source = new ArrayList<>(input);
     }
-public void sort(){
-        mergeSort(source, 0 , source.size()-1);
-}
 
-    public static void mergeSort(ArrayList<String> a, int from, int to) {
+
+    public void sort(){
+        mergeSort(source, 0 , source.size()-1);
+    }
+
+    public  void mergeSort(ArrayList<String> a, int from, int to) {
+        start = System.currentTimeMillis();
         if (from == to) {
             return;
         }
@@ -20,6 +28,8 @@ public void sort(){
         mergeSort(a, from, mid);
         mergeSort(a, mid + 1, to);
         merge(a, from, mid, to);
+        end = System.currentTimeMillis();
+                duration = end - start;
     }// end mergeSort
 //work
 
@@ -40,6 +50,8 @@ public void sort(){
                 i2++;
             }
             j++;
+
+            counter++;
         }
 
         // note that only one of the two while loops below is executed
@@ -63,12 +75,11 @@ public void sort(){
         }
     }//end merge
 
-
-    public void printer(){
-        System.out.println(source.get(0));
-        System.out.println(source.get(1));
-        System.out.println(source.get(2));
-        System.out.println(source.get(3));
+    public int counter(){
+        return counter;
+    }
+    public long duration(){
+        return duration;
     }
 
 }

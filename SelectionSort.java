@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 
 public class SelectionSort {
-    ArrayList<String> values;
-    int counter = 0;
+    private ArrayList<String> values;
+    private int counter = 0;
+    private long start = 0;
+    private long end = 0;
+    private long duration  = 0;
 
     public SelectionSort(ArrayList<String> input){
 
@@ -11,9 +14,12 @@ public class SelectionSort {
 
 
     public void sort() {
+        start = System.currentTimeMillis();
         for (int headIndex = 0; headIndex < values.size(); headIndex++) {
             sortFrom(headIndex);
         }
+        end= System.currentTimeMillis();
+duration  = end - start;
     }
 
     public void sortFrom(int headIndex) {
@@ -27,13 +33,15 @@ public class SelectionSort {
         int smallestIndex = i;
         String smallest = values.get(i);
         for (int j = i; j < values.size(); j++) {
+            counter++;
             String value = values.get(j);
             if (value.compareTo(smallest) < 0) {
-                counter++; 
+
                 smallest = value;
                 smallestIndex = j;
             }
         }
+
         return smallestIndex;
     }
 
@@ -47,10 +55,9 @@ public class SelectionSort {
         values.set(j, head);
     }
 
-    public void printer(){
-        for(int i=0; i<values.size(); i++){
-            System.out.println(values.get(i));
-        }
+    public long duration(){
+        return duration;
 
     }
+
 }

@@ -2,22 +2,26 @@ import java.util.ArrayList;
 
 public class InsertionSort {
     ArrayList<String> source;
-    int counter = 0;
+    private int counter = 0;
+    private long start = 0;
+    private long end = 0;
+    private long duration = 0;
 
     public InsertionSort(ArrayList<String> input){
+
         source = new ArrayList<>(input);
     }
     // insertion sort for ArrayList
     public void insertSort(){
-        long start221 = System.currentTimeMillis();
+        start = System.currentTimeMillis();
         int index = 1;
 
         while (index < source.size()){
             insertSorted((String)(source.get(index)), source, index);
             index = index + 1;
         }
-        long start21 = System.currentTimeMillis();
-        System.out.println(start221-start21);
+        end = System.currentTimeMillis();
+        duration = end - start;
     }
 
     // insert the given (City) object into the given list
@@ -36,11 +40,12 @@ public class InsertionSort {
         source.set(loc+1, s);
 
     }
-
-    public void printer(){
-        System.out.println(source.get(0));
-        System.out.println(source.get(1));
-        System.out.println(source.get(2));
-        System.out.println(source.get(3));
+public long duration(){
+        return duration;
+}
+    public int counter(){
+        return counter;
     }
+
+
 }

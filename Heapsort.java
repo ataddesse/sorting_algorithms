@@ -8,7 +8,10 @@ public class Heapsort {
     // Used for index in heap
     int x = -1;
     int n = 0;
-    int 
+    int counter = 0;
+    private long start = 0;
+    private long end = 0;
+    private long duration = 0;
     // Predefining the heap array
     static String []heap = new String[10000];
 
@@ -39,7 +42,7 @@ public class Heapsort {
             // stored element
             if (heap[index].compareTo(heap[child]) > 0)
             {
-
+counter++;
                 // Swapping the current index
                 // with its child
                 tmp = heap[index];
@@ -70,7 +73,7 @@ public class Heapsort {
 
             // Taking output of
             // the minimum element
-            System.out.print(k + " ");
+           // System.out.print(k + " ");
 
             // Set first element
             // as a last one
@@ -141,7 +144,7 @@ public class Heapsort {
     // Utility function
    void sort_tobeWrapped(String k[], int n)
     {
-
+       start = System.currentTimeMillis();
         // To heapiFy
         for (int i = 0; i < n; i++)
         { heapForm(k[i]);
@@ -149,11 +152,20 @@ public class Heapsort {
 
         // Calling heap sort function
         heapSort();
-    }
+        end = System.currentTimeMillis();
 
+        duration = end - start;
+    }
+public long duration(){
+        return duration;
+}
     void sort(){
         String arr[] = source.toArray(new String[source.size()]);
         sort_tobeWrapped(arr, n);
+    }
+
+    public int counter(){
+        return counter;
     }
 
 

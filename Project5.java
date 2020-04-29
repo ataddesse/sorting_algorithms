@@ -6,79 +6,77 @@ import java.util.ArrayList;
 
 public class Project5 {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello");
 
+       //Reading the file here
         File file = new File("C:\\Users\\amanu\\Lab5\\src\\Word List-1.txt");
 
         BufferedReader br = new BufferedReader(new FileReader(file));
-ArrayList<String> input = new ArrayList<>();
-        ArrayList<String> input1 = new ArrayList<>();
-        input1.add("cbb");
-        input1.add("abb");
-        input1.add("aab");
-        input1.add("bbb");
+        ArrayList<String> input = new ArrayList<>();
 
-        ArrayList<String> input2 = new ArrayList<>();
-        input2.add("cbb");
-        input2.add("abb");
-        input2.add("aab");
-        input2.add("bbb");
+        //Putting all words to an ArrayList
         String st;
-        while ((st = br.readLine()) != null){
+
+        while ((st = br.readLine()) != null) {
+
             input.add(st);
+
           }
 
 
-/*
-        SelectionSort aa = new SelectionSort(input);
-        aa.sort();
-        //aa.printer();
-        InsertionSort ab = new InsertionSort(input);
+// Creating an instance of the selection sort class here
+        SelectionSort sortcheck1 = new SelectionSort(input);
         long startTime1 = System.currentTimeMillis();
-        ab.insertSort();
+        sortcheck1.sort();
         long endTime1 = System.currentTimeMillis();
-        long duration1 = endTime1 - startTime1;
-        System.out.println(duration1);
-        ab.printer();/*
-        QuickSort cb = new QuickSort(input);
-        long startTime1 = System.currentTimeMillis();
-        cb.sort();
-        long endTime1 = System.currentTimeMillis();
-        long duration1 = endTime1 - startTime1;
-        System.out.println(duration1);
-        cb.printter();*/
-
-        Heapsort dd = new Heapsort(input);
-        dd.sort();
-        System.out.println();
-       // dd.printer();
-
-        /*
-
-        MergeSort ff = new MergeSort(input1);
-        long startTime = System.nanoTime();
-        ff.sort();
-        long endTime = System.nanoTime();
-        long duration = endTime - startTime;
-        System.out.println(duration);
-        ff.printer();
-*/
+        long duration1 = sortcheck1.duration();
+       int selectionCounter = sortcheck1.counter();
 
 
+// Creating an instance of the insertion sort class here
+        InsertionSort sortcheck2 = new InsertionSort(input);
+        long startTime2 = System.currentTimeMillis();
+        sortcheck2.insertSort();
+        long endTime2 = System.currentTimeMillis();
+        long duration2 = sortcheck2.duration();
+        int insertionCounter = sortcheck2.counter();
 
-        System.out.println("ALGORITHM          |      Comparisons          | Time (Milliseconds                 ");
+
+// Creating an instance of the quick sort class here
+        QuickSort sortcheck3 = new QuickSort(input);
+        long startTime3 = System.currentTimeMillis();
+        sortcheck3.sort();
+        long endTime3 = System.currentTimeMillis();
+        long duration3 = sortcheck3.duration();
+        int quickCounter = sortcheck3.counter();
+        sortcheck3.printer();
+
+// Creating an instance of the heap sort class here
+        Heapsort sortcheck4 = new Heapsort(input);
+        long startTime4 = System.currentTimeMillis();
+        sortcheck4.sort();
+        long endTime4 = System.currentTimeMillis();
+        long duration4 = sortcheck4.duration();
+        int heapcounter = sortcheck4.counter();
+
+
+// Creating an instance of the merge sort class here
+        MergeSort sortcheck5 = new MergeSort(input);
+        long startTime5 = System.nanoTime();
+        sortcheck5.sort();
+        long endTime5 = System.nanoTime();
+        long duration5 = sortcheck5.duration();
+        int mergeCounter = sortcheck5.counter();
+
+
+
+
+        System.out.println("ALGORITHM          |      Comparisons          |              Time (Milliseconds)                ");
         System.out.println("===================+===========================+====================================");
-        System.out.println("SelectionSort      | Comparisons               | Time (Milliseconds                 ");
-        System.out.println("-------------------+---------------------------+------------------------------------");
-        System.out.println("InsertionSort      | Comparisons               | Time (Milliseconds                 ");
-        System.out.println("-------------------+---------------------------+------------------------------------");
-        System.out.println("QuickSort          | Comparisons               | Time (Milliseconds                 ");
-        System.out.println("-------------------+---------------------------+------------------------------------");
-        System.out.println("MergeSort          | Comparisons               | Time (Milliseconds                 ");
-        System.out.println("-------------------+---------------------------+------------------------------------");
-        System.out.println("HeapSort           | Comparisons               | Time (Milliseconds)                ");
-        System.out.println("-------------------+---------------------------+------------------------------------");
-
+        System.out.println("Selection Sort     |  " +selectionCounter+"                  |"+ duration1);
+        System.out.println("Insertion Sort     |  " +insertionCounter+"                  |"+ duration2);
+        System.out.println("Quick Sort         |  " +quickCounter+"                    |"+ duration3);
+        System.out.println("Heap Sort          |  " +heapcounter+"                     |"+ duration4);
+        System.out.println("Merge Sort         |  " +mergeCounter+"                    |"+ duration5);
 
     }
 
